@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #0e0f1b;
+    color: white;
+    font-family: 'Sora', sans-serif;
+    scroll-behavior: smooth;
+
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #F87516 0%, #5E11FF 100%);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #5E11FF 0%, #F87516 100%);
+}
+
+::-moz-selection {
+    /* Code for Firefox */
+    color: White;
+    background: #6219c0;
+}
+
+::selection {
+    color: White;
+    background: #6219c0;
+}
+
+@font-face {
+    font-family: 'Sora';
+    src: url('./fonts/Sora.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('./fonts/Outfit.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+.hero-contaienr {
+    h1 {
+        font-size: clamp(35px, 6vw, 58px);
+        line-height: clamp(45px, 10vw, 78px);
+    }
+}
+
+.cursor-magic {
+    h2 {
+        font-size: clamp(25px, 6vw, 40px);
+        line-height: clamp(45px, 9vw, 60px);
+    }
+}
+
+.apply {
+    div {
+        >h2 {
+            font-size: clamp(25px, 6vw, 40px);
+            line-height: clamp(45px, 9vw, 60px);
+        }
+    }
+}
+
+.browser,
+.feature {
+    h2 {
+        font-size: clamp(20px, 3vw, 25px) !important;
+    }
+}
