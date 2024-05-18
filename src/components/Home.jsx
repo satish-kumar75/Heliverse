@@ -37,10 +37,11 @@ const Home = () => {
         y: 200,
         duration: 1.4,
         stagger: 0.3,
+        delay: 0.5,
         opacity: 0,
         scrollTrigger: {
-          trigger: "rating-img",
-          start: "25% 93%",
+          trigger: "body",
+          start: "22% 93%",
           end: "30% 90%",
           scrub: true,
           yoyo: true,
@@ -54,12 +55,11 @@ const Home = () => {
       gsap.from(".left", {
         x: -200,
         duration: 1.4,
-        stagger: 0.3,
         opacity: 0,
         scrollTrigger: {
-          trigger: "rating-img",
-          start: "30% 93%",
-          end: "35% 90%",
+          trigger: "body",
+          start: "28% 93%",
+          end: "38% 90%",
           scrub: true,
           yoyo: true,
         },
@@ -67,10 +67,9 @@ const Home = () => {
       gsap.from(".right", {
         x: 200,
         duration: 1.4,
-        stagger: 0.3,
         opacity: 0,
         scrollTrigger: {
-          trigger: "rating-img",
+          trigger: "body",
           start: "30% 93%",
           end: "35% 90%",
           scrub: true,
@@ -86,10 +85,9 @@ const Home = () => {
       gsap.from(container4.current, {
         x: -200,
         duration: 1.4,
-        stagger: 0.3,
         opacity: 0,
         scrollTrigger: {
-          trigger: "rating-img",
+          trigger: "body",
           start: "86% 93%",
           end: "98% 90%",
           scrub: true,
@@ -104,10 +102,9 @@ const Home = () => {
       gsap.from(container5.current, {
         x: 200,
         duration: 1.4,
-        stagger: 0.3,
         opacity: 0,
         scrollTrigger: {
-          trigger: "rating-img",
+          trigger: "body",
           start: "65% 93%",
           end: "75% 90%",
           scrub: true,
@@ -122,10 +119,9 @@ const Home = () => {
       gsap.from(container6.current, {
         x: -400,
         duration: 1.4,
-        stagger: 0.3,
         opacity: 0,
         scrollTrigger: {
-          trigger: "rating-img",
+          trigger: "body",
           start: "40% 93%",
           end: "60% 90%",
           scrub: true,
@@ -159,7 +155,12 @@ const Home = () => {
     <div className="max-w-screen-xl mx-auto px-3 overflow-hidden">
       <div className="header flex justify-between pt-9 items-center">
         <a href="">
-          <img loading="lazy" src={assets.logo} alt="motion art logo" />
+          <img
+            className="sm:w-full w-10/12"
+            loading="lazy"
+            src={assets.logo}
+            alt="motion art logo"
+          />
         </a>
         <a
           className="sm:block hidden bg-white text-black px-8 py-3 font-medium rounded-lg inline-block h-fit border-2 hover:border-white hover:text-white hover:bg-transparent duration-300 ease-in-out"
@@ -238,7 +239,7 @@ const Home = () => {
               motion art elements.
             </p>
             <a
-              className="px-6 py-4 rounded-2xl bg-gradient-to-r text-xl inline-block"
+              className="px-6 py-4 rounded-2xl bg-gradient-to-r text-xl inline-block "
               href="https://codecanyon.net/item/motion-art-for-elementor-wordpress-plugin/48826891"
               target="_blank"
             >
