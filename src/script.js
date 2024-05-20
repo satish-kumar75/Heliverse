@@ -1,30 +1,39 @@
 /* eslint-disable no-unused-vars */
-// put the animation on load, otherwise it bugs out
+
+
 window.addEventListener("load", () => {
   initFluid();
 });
 
 const initFluid = () => {
-  // anim setup || in an active project you can set this to the html body. however ive found a bound box to the viewport looks + performs better
   const canvas = document.getElementById("fluid");
   resizeCanvas();
 
   let config = {
     SIM_RESOLUTION: 128,
-    DYE_RESOLUTION: 1440,
+    DYE_RESOLUTION: 1024,
     CAPTURE_RESOLUTION: 512,
     DENSITY_DISSIPATION: 3.5,
     VELOCITY_DISSIPATION: 3,
-    PRESSURE: 0.1,
+    PRESSURE: 0.8,
     PRESSURE_ITERATIONS: 20,
-    CURL: 15,
-    SPLAT_RADIUS: 0.6,
+    CURL: 30,
+    SPLAT_RADIUS: 0.25,
     SPLAT_FORCE: 6000,
     SHADING: true,
     COLOR_UPDATE_SPEED: 10,
     PAUSED: false,
     BACK_COLOR: { r: 0, g: 0, b: 0 },
     TRANSPARENT: true,
+    BLOOM: true,
+    BLOOM_ITERATIONS: 8,
+    BLOOM_RESOLUTION: 256,
+    BLOOM_INTENSITY: 0.8,
+    BLOOM_THRESHOLD: 0.6,
+    BLOOM_SOFT_KNEE: 0.7,
+    SUNRAYS: true,
+    SUNRAYS_RESOLUTION: 196,
+    SUNRAYS_WEIGHT: 1.0,
   };
 
   function pointerPrototype() {
@@ -915,16 +924,27 @@ const initFluid = () => {
 
   updateKeywords();
   initFramebuffers();
+  multipleSplats(3,8);
 
   let lastUpdateTime = Date.now();
   let colorUpdateTimer = 0.0;
+  let animationStarted = false;
+  update();
 
   function update() {
     const dt = calcDeltaTime();
-    // console.log(dt)
-    if (resizeCanvas()) initFramebuffers();
+    if (resizeCanvas()) {
+      initFramebuffers(); 
+    }
     updateColors(dt);
     applyInputs();
+
+    if (!animationStarted) {
+      initFramebuffers(); 
+      multipleSplats(3,8); 
+      animationStarted = true; 
+    }
+
     step(dt);
     render(null);
     requestAnimationFrame(update);
@@ -1098,6 +1118,19 @@ const initFluid = () => {
     blit(target);
   }
 
+  function multipleSplats(amount, intensity) {
+    for (let i = 0; i < amount; i++) {
+      const color = generateColor();
+      color.r *= intensity; 
+      color.g *= intensity;
+      color.b *= intensity;
+      const x = Math.random();
+      const y = Math.random();
+      const dx = 1000 * (Math.random() - 0.5);
+      const dy = 1000 * (Math.random() - 0.5);
+      splat(x, y, dx, dy, color);
+    }
+  }
   function splatPointer(pointer) {
     let dx = pointer.deltaX * config.SPLAT_FORCE;
     let dy = pointer.deltaY * config.SPLAT_FORCE;

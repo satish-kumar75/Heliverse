@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { assets } from "../assets/assets";
 import { useRef } from "react";
 import gsap from "gsap";
@@ -9,11 +10,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
   const container1 = useRef(null);
-  const container2 = useRef(null);
-  const container3 = useRef(null);
-  const container4 = useRef(null);
-  const container5 = useRef(null);
-  const container6 = useRef(null);
 
   useGSAP(
     () => {
@@ -29,107 +25,6 @@ const Home = () => {
       });
     },
     { scope: container1 }
-  );
-
-  useGSAP(
-    () => {
-      gsap.from(container2.current, {
-        y: 200,
-        duration: 1.4,
-        stagger: 0.3,
-        delay: 0.5,
-        opacity: 0,
-        scrollTrigger: {
-          trigger: "body",
-          start: "22% 93%",
-          end: "30% 90%",
-          scrub: true,
-          yoyo: true,
-        },
-      });
-    },
-    { scope: container2 }
-  );
-  useGSAP(
-    () => {
-      gsap.from(".left", {
-        x: -200,
-        duration: 1.4,
-        opacity: 0,
-        scrollTrigger: {
-          trigger: "body",
-          start: "28% 93%",
-          end: "38% 90%",
-          scrub: true,
-          yoyo: true,
-        },
-      });
-      gsap.from(".right", {
-        x: 200,
-        duration: 1.4,
-        opacity: 0,
-        scrollTrigger: {
-          trigger: "body",
-          start: "30% 93%",
-          end: "35% 90%",
-          scrub: true,
-          yoyo: true,
-        },
-      });
-    },
-    { scope: container3 }
-  );
-
-  useGSAP(
-    () => {
-      gsap.from(container4.current, {
-        x: -200,
-        duration: 1.4,
-        opacity: 0,
-        scrollTrigger: {
-          trigger: "body",
-          start: "86% 93%",
-          end: "98% 90%",
-          scrub: true,
-          yoyo: true,
-        },
-      });
-    },
-    { scope: container4 }
-  );
-  useGSAP(
-    () => {
-      gsap.from(container5.current, {
-        x: 200,
-        duration: 1.4,
-        opacity: 0,
-        scrollTrigger: {
-          trigger: "body",
-          start: "65% 93%",
-          end: "75% 90%",
-          scrub: true,
-          yoyo: true,
-        },
-      });
-    },
-    { scope: container5 }
-  );
-  useGSAP(
-    () => {
-      gsap.from(container6.current, {
-        x: -400,
-        duration: 1.4,
-        opacity: 0,
-        scrollTrigger: {
-          trigger: "body",
-          start: "40% 93%",
-          end: "60% 90%",
-          scrub: true,
-          yoyo: true,
-        },
-      });
-    },
-    { scope: container6 }
   );
 
   const features = [
@@ -204,10 +99,7 @@ const Home = () => {
         <h3 className="text-zinc-300 text-xl text-center">
           Trusted by thousands of users around the world
         </h3>
-        <div
-          ref={container2}
-          className="overflow-hidden flex lg:gap-24 gap-10 pt-12 flex-wrap lg:justify-between justify-center"
-        >
+        <div className="overflow-hidden flex lg:gap-24 gap-10 pt-12 flex-wrap lg:justify-between justify-center">
           {[
             { img: assets.img2, score: "4.5 Score, 9 Reviews" },
             { img: assets.img1, score: "4.5 Score, 9 Reviews" },
@@ -224,10 +116,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div
-        ref={container3}
-        className="cursor-magic grid grid-cols-1 md:grid-cols-5 gap-10 pt-28 justify-items-center md:justify-items-end sm:text-start text-center"
-      >
+      <div className="cursor-magic grid grid-cols-1 md:grid-cols-5 gap-10 pt-28 justify-items-center md:justify-items-end sm:text-start text-center">
         <div className="md:col-span-3">
           <div className="left">
             <h2>
@@ -253,7 +142,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div ref={container6} className="apply pt-28">
+      <div className="apply pt-28">
         <h2 className="text-center max-w-2xl mx-auto">
           Apply On Any Section Or Enable For Whole Page
         </h2>
@@ -293,10 +182,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div
-        ref={container5}
-        className="browser bg-gradient3 border-2 border-[#251E35] rounded-3xl sm:mt-32 mt-6 px-10 py-12"
-      >
+      <div className="browser bg-gradient3 border-2 border-[#251E35] rounded-3xl sm:mt-32 mt-6 px-10 py-12">
         <div className="max-w-[460px] mx-auto text-center">
           <h2>Supported by All Popular Browsers</h2>
           <p className="my-6 text-zinc-400">
@@ -307,7 +193,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div ref={container4} className="apply my-28">
+      <div className="apply my-28">
         <div className="text-center max-w-2xl mx-auto">
           <h2>An All-Round Plugin With Powerful Features</h2>
           <p className="text-zinc-400 mt-3">
